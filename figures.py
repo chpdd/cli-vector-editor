@@ -1,16 +1,13 @@
-from collections import namedtuple
-
-
 class Figure:
 
     def __repr__(self):
-        return f"Figure({self.figure_type})"
+        return "Figure"
 
     @staticmethod
-    def float_my_error(x):
+    def custom_float(x):
         try:
             return float(x)
-        except (ValueError):
+        except ValueError:
             raise ValueError(f'Argument with value="{x}" must be a number')
 
 
@@ -18,8 +15,8 @@ class Point(Figure):
     args_n = 2
 
     def __init__(self, x, y):
-        self._x = self.float_my_error(x)
-        self._y = self.float_my_error(y)
+        self._x = self.custom_float(x)
+        self._y = self.custom_float(y)
 
     def __repr__(self):
         return f'Point({self.x}, {self.y})'
@@ -58,7 +55,7 @@ class Circle(Figure):
     args_n = 3
 
     def __init__(self, x, y, radius):
-        self._radius = self.float_my_error(radius)
+        self._radius = self.custom_float(radius)
         if self.radius <= 0:
             raise ValueError("Radius must be positive number")
         self._center = Point(x, y)
@@ -101,20 +98,22 @@ class FiguresContainer:
             figures = []
         self._figures = figures
 
-
     def __repr__(self):
         return f"FiguresContainer(figures={self._figures})"
 
     def create(self, *args):
         if len(args) < 1:
             raise ValueError("This command should have minimum 3 arguments")
+
         figure_type = args[0].lower()
         args = args[1:]
         if figure_type not in self.figures_classes_dict.keys():
             raise ValueError("Unknown figure type")
+
         figure_class = self.figures_classes_dict[figure_type]
         if len(args) != figure_class.args_n:
             raise ValueError(f'"create {figure_type}" needs {figure_class.args_n} parameters')
+
         figure = figure_class(*args)
         self._figures.append(figure)
         return f"{figure} created"
@@ -122,18 +121,22 @@ class FiguresContainer:
     def delete(self, *args):
         if len(args) != 1:
             raise ValueError("This command should have 1 argument")
+
         key = args[0]
         if not key.isdigit():
             raise TypeError("The key must be of type int")
+
         key = int(key)
         if key >= len(self._figures):
             raise ValueError("Key outside the range of acceptable values")
+
         figure = self._figures.pop(key)
         return f"{figure} deleted"
 
     def list_figures(self, *args):
         if len(args) != 0:
             raise ValueError("This command should have 0 arguments")
+
         if not self._figures:
             return "No figures"
         result = "List of figures:"

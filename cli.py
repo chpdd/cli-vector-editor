@@ -40,7 +40,7 @@ class CLI:
     def add_handler(self, handler):
         self._handlers.append(handler)
 
-    def run_command_handler(self):
+    def run(self):
         while True:
             input_data = input(f"{self.cli_title}: ").strip().split()
             if input_data:
@@ -50,7 +50,7 @@ class CLI:
                         if handler.call_check(call_word):
                             handler.start(input_data)
                             break
-                    except (Exception) as e:
+                    except Exception as e:
                         print(e)
                         break
                 else:
