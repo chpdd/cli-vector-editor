@@ -24,7 +24,32 @@ class CLI:
         self._handlers = handlers
         self._cli_title = cli_title
 
-        self.add_handler(CommandHandler("exit", lambda: exit()))
+        self.add_handler(CommandHandler("exit", self.exit))
+        self.add_handler(CommandHandler("help", self.help))
+
+    def help(self, *args):
+        """
+        Command that explains how commands work
+        :param: No params
+        :example: help
+        """
+        if len(args) != 0:
+            raise ValueError("This command should have 0 arguments")
+        result = "Help:"
+        for handler in self.handlers:
+            result += f"\n{handler.call_word}:{handler.action.__doc__}"
+        return result
+
+    @staticmethod
+    def exit(*args):
+        """
+        Command that terminates the program
+        :param: No params
+        :example: exit
+        """
+        if len(args) != 0:
+            raise ValueError("This command should have 0 arguments")
+        exit()
 
     def __repr__(self):
         return f"CLI(handlers={self.handlers}, cli_title={self.cli_title})"
