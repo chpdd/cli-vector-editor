@@ -81,9 +81,6 @@ class Square(Figure):
     def __init__(self, x1, y1, x2, y2):
         self._diagonal = Line(x1, y1, x2, y2)
 
-    def __str__(self):
-        return f''
-
     def __repr__(self):
         return f'Square(diagonal={self.diagonal})'
 
