@@ -143,7 +143,6 @@ class FiguresContainer:
         if not key.isdigit() or int(key) >= len(self._figures):
             raise TypeError('The key must be of type “int” and in the range of valid indexes')
 
-
         figure = self._figures.pop(int(key))
         return f"{figure} deleted"
 

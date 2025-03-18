@@ -35,7 +35,7 @@ class CLI:
         """
         if len(args) != 0:
             raise ValueError("This command should have 0 arguments")
-        result = "Help:"
+        result = ""
         for handler in self.handlers:
             result += f"\n{handler.call_word}:{handler.action.__doc__}"
         return result
