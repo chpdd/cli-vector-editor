@@ -8,7 +8,7 @@ class Figure:
         try:
             return float(x)
         except ValueError:
-            raise ValueError(f'Argument with value="{x}" must be a number')
+            raise ValueError(f'Argument in the place of "{x}" must be a number')
 
 
 class Point(Figure):
@@ -102,6 +102,18 @@ class FiguresContainer:
         return f"FiguresContainer(figures={self._figures})"
 
     def create(self, *args):
+        """
+        Creates figures using arguments.
+        :param: figure_type and coordinates
+        :example: create square 1 2 3 4
+
+        Types of figures and args:
+        Point - 2 coordinates,
+        Line - 2 points(4 coordinates),
+        Circle - center point(2 coordinates) and radius,
+        Square - diagonal(4 coordinates)
+
+        """
         if len(args) < 1:
             raise ValueError("This command should have minimum 3 arguments")
 
@@ -119,21 +131,28 @@ class FiguresContainer:
         return f"{figure} created"
 
     def delete(self, *args):
+        """
+        Deletes a figure by key
+        :param: key
+        :example: delete 1
+        """
         if len(args) != 1:
             raise ValueError("This command should have 1 argument")
 
         key = args[0]
-        if not key.isdigit():
-            raise TypeError("The key must be of type int")
+        if not key.isdigit() or int(key) >= len(self._figures):
+            raise TypeError('The key must be of type “int” and in the range of valid indexes')
 
-        key = int(key)
-        if key >= len(self._figures):
-            raise ValueError("Key outside the range of acceptable values")
 
-        figure = self._figures.pop(key)
+        figure = self._figures.pop(int(key))
         return f"{figure} deleted"
 
     def list_figures(self, *args):
+        """
+        Outputs a list of all figures with their indexes
+        :param: No params
+        :example: list
+        """
         if len(args) != 0:
             raise ValueError("This command should have 0 arguments")
 
