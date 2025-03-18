@@ -1,30 +1,51 @@
-A simple vector editor with a command line interface (CLI).
-It is implemented in such a way that it can be easily extended, as the processing of commands here is implemented using separate objects of the CommandHandler class.
+# Simple Vector Editor CLI
 
-Types of figures and args:
-	Point - 2 coordinates,
-	Line - 2 points(4 coordinates),
-	Circle - center point(2 coordinates) and radius,
-	Square - diagonal(4 coordinates)
+A simple vector editor with a command-line interface (CLI). It is designed to be easily extended, as the command processing is handled by separate objects of the `CommandHandler` class.
 
-Commands:
-	exit:
-Command that terminates the program
-:param: No params
-:example: exit
-help:
-Command that explains how commands work
-:param: No params
-:example: help
-create:
-Creates figures using arguments.
-:param: figure_type and coordinates
-:example: create square 1 2 3 4
-delete:
-Deletes a figure by key
-:param: key
-:example: delete 1
-list:
-Outputs a list of all figures with their indexes
-:param: No params
-:example: list
+## Figure Types and Arguments
+
+- **Point**: 2 coordinates  
+- **Line**: 2 points (4 coordinates)  
+- **Circle**: center point (2 coordinates) and radius  
+- **Square**: diagonal (4 coordinates)
+
+## Commands
+
+### `exit`
+- **Description**: Command that terminates the program.
+- **Parameters**: No parameters
+- **Example**: 
+  ```
+  exit
+
+### `help`
+- **Description**: Command that explains how commands work.
+- **Parameters**: No parameters
+- **Example**: 
+  ```
+  help
+  ```
+
+### `create`
+- **Description**: Creates figures using the specified arguments.
+- **Parameters**: `figure_type` and coordinates
+- **Example**:
+  ```
+  create square 1 2 3 4
+  ```
+
+### `delete`
+- **Description**: Deletes a figure by key.
+- **Parameters**: `key`
+- **Example**:
+  ```
+  delete 1
+  ```
+
+### `list`
+- **Description**: Outputs a list of all figures with their indexes.
+- **Parameters**: No parameters
+- **Example**:
+  ```
+  list
+  ```
