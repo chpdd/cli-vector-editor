@@ -1,6 +1,6 @@
-# Simple Vector Editor CLI
+# CLI Vector Editor
 
-A simple vector editor with a command-line interface (CLI). It is designed to be easily extended, as the command processing is handled by separate objects of the `CommandHandler` class.
+Vector editor with a command-line interface (CLI). It is designed to be easily extended, as the command processing is handled by separate objects of the `CommandHandler` class.
 
 ## Figure Types and Arguments
 
