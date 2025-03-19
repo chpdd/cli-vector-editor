@@ -80,3 +80,4 @@ class CLI:
                         break
                 else:
                     print("Unknown command")
+            print()
