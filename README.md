@@ -8,6 +8,8 @@ A simple vector editor with a command-line interface (CLI). It is designed to be
 - **Line**: 2 points (4 coordinates)  
 - **Circle**: center point (2 coordinates) and radius  
 - **Square**: diagonal (4 coordinates)
+- **Oval**: center point(2 coordinates), radius_x, radius_y and angle 
+- **Rectangle**: center point(2 coordinates), length, width and angle 
 
 ## Commands
 
@@ -28,7 +30,7 @@ A simple vector editor with a command-line interface (CLI). It is designed to be
 
 ### `create`
 - **Description**: Creates figures using the specified arguments.
-- **Parameters**: `figure_type` and coordinates
+- **Parameters**: `figure_type` and special figure parameters
 - **Example**:
   ```
   create square 1 2 3 4
@@ -48,4 +50,20 @@ A simple vector editor with a command-line interface (CLI). It is designed to be
 - **Example**:
   ```
   list
+  ```
+  
+### `save`
+- **Description**: Saves a list of all figures to “figures_save.txt” or to a specified file.
+- **Parameters**: `file_name`
+- **Example**:
+  ```
+  save save_2.txt
+  ```
+
+### `load`
+- **Description**: Loads all figures from the “figures_save.txt” file or from the specified file.
+- **Parameters**: `file_name`
+- **Example**:
+  ```
+  load save_2.txt
   ```
